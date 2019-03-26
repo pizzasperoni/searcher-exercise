@@ -1,0 +1,22 @@
+.list-item {
+  display:flex;
+  justify-content: baseline;
+  font-size: 18px;
+  font-family: $font-family;
+  border: 1px solid $light-grey;
+  padding: 16px;
+  background-color: white;
+  margin: 0;
+}
+
+.list-item .description {
+  padding-left: 16px;
+}
+
+.list-item .thumbnail {
+  border-radius: 4px;
+}
+
+.price {
+  font-size: 25px;  
+}

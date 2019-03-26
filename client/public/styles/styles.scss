@@ -1,0 +1,17 @@
+@import './base/variables';
+@import './components/searchBar';
+@import './components/list';
+
+body {
+  background-color: $light-grey;
+  display: flex;
+  flex-direction: column;
+}
+
+ul {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
