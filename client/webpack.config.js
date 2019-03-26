@@ -27,6 +27,9 @@ module.exports = (env) => {
     },
     devServer: {
       port: 9000,
+      historyApiFallback: {
+        index: 'index.html'
+      }
     },
     module: {
       rules: [

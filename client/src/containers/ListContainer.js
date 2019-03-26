@@ -20,16 +20,21 @@ class ListContainer extends Component {
   }
 
   _renderSubComp(){
-    console.log('isShowingDetails', this.props.isShowingDetails)
-    
-    if(this.props.isShowingDetails){
-      console.log('description on')
-      return <Details  />
+    if(this.props.productDetails){
+      console.log('pcs', this.props.productDetails)
+      console.log('description', this.props.porductDescription)
+      
+      return (
+        <Details 
+          // thumbnail={this.props.productDetails.pictures[0].url}
+          title={this.props.productDetails.title}
+          price={this.props.productDetails.price}
+          description={this.props.porductDescription}
+        />
+      ) 
     }
   }
   
-
-
   render() {
     return (
       <div>
@@ -56,10 +61,10 @@ const mapDispatchToProps = dispatch => {
 // mapStateToProps
 const mapStateToProps = state => ({
   products: state.products.products,
-  productName: state.productName,
-  isShowingDetails: state.isShowingDetails,
-  productDetails: state.productDetails,
-  porductDescription: state.porductDescription
+  productName: state.products.productName,
+  isShowingDetails: state.products.isShowingDetails,
+  productDetails: state.products.productDetails,
+  porductDescription: state.products.porductDescription
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListContainer)

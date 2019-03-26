@@ -5,7 +5,6 @@ const PRODUCT_URL = 'https://api.mercadolibre.com/items/:id'
 
 export const showDetails = isShowingDetails => dispatch => {
   isShowingDetails = !isShowingDetails
-
   dispatch({
     type: SHOW_DETAIL,
     payload: isShowingDetails
@@ -17,14 +16,15 @@ export const getProductDetails = (product) => dispatch => {
   let productDetails = {}
   fetch(url)
     .then(res => res.json())
-    .then(data => productDetails = data)
-  console.log('productDetails', productDetails)
-  dispatch({
-    type: GET_DETAILS,
-    payload: productDetails
-  })
-}
+    .then(data => {
+      productDetails = data
+      dispatch({
+        type: GET_DETAILS,
+        payload: productDetails
+      })
+    })
 
+}
 
 export const getDescription = (product) => dispatch => {
   let url = DESCRIPTION_URL.replace(':id', product.id)
@@ -32,11 +32,11 @@ export const getDescription = (product) => dispatch => {
 
   fetch(url)
     .then(res => res.json())
-    .then(data=> productDescription = data.plain_text)
-
-  console.log('productDescription',productDescription)
-  dispatch({
-    type: GET_DESCRIPTION,
-    payload: productDescription
-  })
+    .then(data=> {
+      productDescription = data.plain_text
+      dispatch({
+        type: GET_DESCRIPTION,
+        payload: productDescription
+      })
+    })
 }

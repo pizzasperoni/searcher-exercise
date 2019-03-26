@@ -4,9 +4,10 @@ const Details = (props) => {
   console.log('details rendered!', props)
   return (
     <div>
-      <img src={props.data.thumbnail}></img>
-      <h2>{props.data.title}</h2>
-      <h1>$ {props.data.price}</h1>
+      {/* <img src={props.thumbnail}></img> */}
+      <h2>{props.title}</h2>
+      <h1>$ {props.price}</h1>
+      <p>{props.description}</p>
     </div>
   )
 }

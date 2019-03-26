@@ -10,6 +10,7 @@ class ListElementContainer extends Component {
 
   showDetails = (e, product) =>{
     //get details from store
+    console.log('producto clickeado', product)
     this.props.getDescription(product)
     this.props.getProductDetails(product)
     
