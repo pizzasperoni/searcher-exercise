@@ -37407,7 +37407,6 @@ var Main = function (_Component) {
           _reactRouterDom.Switch,
           null,
           _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _App2.default, exact: true }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/asd', component: _App2.default, exact: true }),
           _react2.default.createElement(_reactRouterDom.Route, { component: _Error2.default })
         )
       );

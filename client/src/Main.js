@@ -10,7 +10,6 @@ class Main extends Component {
       <BrowserRouter>
       <Switch>
         <Route path="/" component={App} exact/>
-        <Route path="/asd" component={App} exact />
         <Route component={Error} />
       </Switch>
     </BrowserRouter>
