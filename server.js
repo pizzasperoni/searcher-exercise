@@ -8,15 +8,41 @@ const app = express();
 
 
 app.get('/api/items/:id', async (req, res) => {
-  const id = req.params.id
+  const idParam = req.params.id
+  let description = ''
 
-  let product = await meli.getProduct(id)
+  let product = await meli.getProduct(idParam)
+
+  if (product) {
+    description = await meli.getDescription(idParam)
+  }
+
+  let { 
+    id , 
+    price, 
+    title, 
+    pictures, 
+    condition, 
+    free_shipping, 
+    sold_quantity  
+  } = product
+
+  let fitleredProduct = { 
+    id , 
+    price, 
+    title, 
+    pictures, 
+    condition, 
+    free_shipping, 
+    sold_quantity  
+  }
+
+  fitleredProduct.description = description
 
   res.status(200).send({
-    success: 'true',
-    message: 'product returned successfully',
-    id: id,
-    product: product
+    // success: 'true',
+    // message: 'product returned successfully',
+    product: fitleredProduct
   })
 })
 
@@ -27,9 +53,8 @@ app.get('/api/items', async (req, res) => {
   if (request.q){
     productList = await meli.getProductList(request.q)
   }
+
   res.status(200).send({
-    success: 'true',
-    request: req.query,
     productList: productList
   })
 })

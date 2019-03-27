@@ -13,6 +13,12 @@ module.exports = {
     return res.data
   },
 
+  getDescription: async function (id) {
+    const url = DESCRIPTION_URL.replace(':id', id)
+    let res = await axios.get(url)
+    return res.data.plain_text
+  },
+
   getProductList: async function(product) {
     const url = SEARCH_URL+product
     let list = await axios.get(url)
