@@ -1,6 +1,5 @@
 import { 
   FETCH_PRODUCTS,
-  GET_DESCRIPTION,
   SHOW_DETAIL,
   GET_DETAILS,
   SET_PRODUCT_NAME
@@ -33,11 +32,6 @@ const productsReducer = (state = initialState, action) => {
       return {
         ...state,
         productDetails: action.payload
-      }
-    case GET_DESCRIPTION:
-      return {
-        ...state,
-        porductDescription: action.payload
       }
     default:
       return state

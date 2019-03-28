@@ -54,8 +54,10 @@ app.get('/api/items', async (req, res) => {
     productList = await meli.getProductList(request.q)
   }
 
+  let productsToShow = productList.slice(0, 4)
+
   res.status(200).send({
-    productList: productList
+    productList: productsToShow
   })
 })
 

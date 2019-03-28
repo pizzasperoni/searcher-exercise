@@ -1,7 +1,6 @@
-import { SHOW_DETAIL, GET_DETAILS, GET_DESCRIPTION } from './types'
+import { SHOW_DETAIL, GET_DETAILS,  } from './types'
 
-const DESCRIPTION_URL = 'https://api.mercadolibre.com/items/:id/description'
-const PRODUCT_URL = 'https://api.mercadolibre.com/items/:id'
+const PRODUCT_URL = 'http://localhost:8000/api/items/'
 
 export const showDetails = isShowingDetails => dispatch => {
   isShowingDetails = !isShowingDetails
@@ -12,31 +11,15 @@ export const showDetails = isShowingDetails => dispatch => {
 }
 
 export const getProductDetails = (product) => dispatch => {
-  let url = PRODUCT_URL.replace(':id', product.id)
+  let url = `${PRODUCT_URL}${product.id}`
   let productDetails = {}
   fetch(url)
-    .then(res => res.json())
-    .then(data => {
-      productDetails = data
-      dispatch({
-        type: GET_DETAILS,
-        payload: productDetails
-      })
+  .then(res => res.json())
+  .then(data => {
+    productDetails = data.product
+    dispatch({
+      type: GET_DETAILS,
+      payload: productDetails
     })
-
-}
-
-export const getDescription = (product) => dispatch => {
-  let url = DESCRIPTION_URL.replace(':id', product.id)
-  let productDescription = ''
-
-  fetch(url)
-    .then(res => res.json())
-    .then(data=> {
-      productDescription = data.plain_text
-      dispatch({
-        type: GET_DESCRIPTION,
-        payload: productDescription
-      })
-    })
+  })
 }

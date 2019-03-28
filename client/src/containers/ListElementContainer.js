@@ -3,15 +3,12 @@ import ListElement from '../components/table/ListElement'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import { getProductDetails, getDescription } from '../actions/listActions'
-import store from '../store'
+import { getProductDetails,  } from '../actions/listActions'
 
 class ListElementContainer extends Component {
 
   showDetails = (e, product) =>{
-    //get details from store
     console.log('producto clickeado', product)
-    this.props.getDescription(product)
     this.props.getProductDetails(product)
     
   }
@@ -19,7 +16,8 @@ class ListElementContainer extends Component {
   render() {
     return (
       <div onClick={this.props.handleDetails}>
-        {this.props.items.map((item)=>{
+        {
+          this.props.items.map((item)=>{
           return (
             <ListElement 
               showDetails={((e)=>this.showDetails(e, item))}
@@ -38,7 +36,6 @@ class ListElementContainer extends Component {
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators({
-    getDescription,
     getProductDetails
   }, dispatch)
 }
