@@ -1,11 +1,14 @@
 @import './base/variables';
 @import './components/searchBar';
 @import './components/list';
+@import './components/details';
+@import './base/buttons';
 
 body {
   background-color: $light-grey;
   display: flex;
   flex-direction: column;
+  margin: 0;
 }
 
 ul {

@@ -1,12 +1,15 @@
 const express = require('express')
 const path = require('path')
-const bodyParser = require('body-parser')
 
 const meli = require('./meli')
 
 const app = express();
 
-
+/*
+endpoint to get a specific product
+params: product id
+returns: an object with product details such as description
+*/
 app.get('/api/items/:id', async (req, res) => {
   const idParam = req.params.id
   let description = ''
@@ -46,6 +49,11 @@ app.get('/api/items/:id', async (req, res) => {
   })
 })
 
+/*
+endpoint to get a list of products
+params: product name
+returns: array of the first 4 products
+*/
 app.get('/api/items', async (req, res) => {
   const request = req.query
   let productList = []

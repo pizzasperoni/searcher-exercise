@@ -9,29 +9,18 @@ import Details from '../components/details/Details'
 import { fetchProducts } from '../actions/searchBarActions'
 import { showDetails } from '../actions/listActions'
 
-
 class ListContainer extends Component {
   componentWillMount(){
-    this.props.fetchProducts("celulares")
+    if(this.props.search.includes('search')){
+      const params = new URLSearchParams(this.props.search)
+      this.props.fetchProducts(params.get('search'))
+    }
   }
 
   handleDetails = () => {
     this.props.showDetails(this.props.isShowingDetails)
   }
 
-  _renderSubComp(){
-    // if(this.props.productDetails){
-
-    //    return (
-    //     <Details 
-    //       // thumbnail={this.props.productDetails.pictures[0].url}
-    //       title={this.props.productDetails.title}
-    //       price={this.props.productDetails.price}
-    //     />
-    //   ) 
-    // }
-  }
-  
   render() {
     return (
       <div>
@@ -41,7 +30,6 @@ class ListContainer extends Component {
               items={this.props.products}
             />
         </ul> 
-        {this._renderSubComp()}       
       </div>
     )  
   }

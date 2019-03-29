@@ -4,13 +4,10 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 import { getProductDetails,  } from '../actions/listActions'
-
 class ListElementContainer extends Component {
 
   showDetails = (e, product) =>{
-    console.log('producto clickeado', product)
-    this.props.getProductDetails(product)
-    
+    this.props.getProductDetails(product.id)
   }
 
   render() {
@@ -22,6 +19,7 @@ class ListElementContainer extends Component {
             <ListElement 
               showDetails={((e)=>this.showDetails(e, item))}
               key={item.id}
+              id={item.id}
               thumbnail={item.thumbnail}
               price={item.price}
               title={item.title}

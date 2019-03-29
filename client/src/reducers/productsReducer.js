@@ -8,7 +8,8 @@ import {
 const initialState = {
   productName: '',
   products: [],
-  isShowingDetails: false
+  isShowingDetails: false,
+  productDetails: {}
 }
 
 const productsReducer = (state = initialState, action) => {
