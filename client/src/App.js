@@ -20,7 +20,6 @@ class App extends Component {
     }else if(details !== {}){
       return(
         <div>
-          <SearchBarContainer />
           <DetailsContainer details={details} />
         </div>
       )

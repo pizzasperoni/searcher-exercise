@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import { getProductDetails,  } from '../actions/listActions'
+import SearchBarContainer from './SearchBarContainer'
 import Details from '../components/details/Details'
 import Spinner from '../components/loading/Spinner'
 
@@ -16,9 +17,12 @@ class DetailsContainer extends Component {
   render() {
     return (
       <div className="container">
-        {
+        <SearchBarContainer />
+        { 
           this.props.productDetails.pictures ? 
-          (<Details details={this.props.productDetails} />)
+          ( 
+            <Details details={this.props.productDetails} />
+          )
           :
           (<div>
             <Spinner />

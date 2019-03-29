@@ -22,13 +22,11 @@ class searchBar extends Component {
 
   render() {
     return (
-      <div>
-        <SingleInput
-          handleSubmit={this.handleSubmit} 
-          controlFunc={this.handleInput} 
-          content={this.props.productName}
-        />
-      </div>
+      <SingleInput
+        handleSubmit={this.handleSubmit} 
+        controlFunc={this.handleInput} 
+        content={this.props.productName}
+      />
     )
   }
 }
