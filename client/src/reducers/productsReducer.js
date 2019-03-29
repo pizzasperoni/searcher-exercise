@@ -2,7 +2,8 @@ import {
   FETCH_PRODUCTS,
   SHOW_DETAIL,
   GET_DETAILS,
-  SET_PRODUCT_NAME
+  SET_PRODUCT_NAME,
+  CLEAR_STATE
 } from '../actions/types'
 
 const initialState = {
@@ -15,6 +16,7 @@ const initialState = {
 const productsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_PRODUCTS: 
+      console.log('products', action.payload)
       return {
         ...state,
         products: action.payload
@@ -25,6 +27,7 @@ const productsReducer = (state = initialState, action) => {
         productName: action.payload
       }
     case SHOW_DETAIL: 
+    console.log('action', action.payload)
       return {
         ...state,
         isShowingDetails: action.payload
@@ -34,6 +37,8 @@ const productsReducer = (state = initialState, action) => {
         ...state,
         productDetails: action.payload
       }
+    case CLEAR_STATE:
+      return initialState 
     default:
       return state
   }

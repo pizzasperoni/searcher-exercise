@@ -19,4 +19,19 @@
 
 .price {
   font-size: 25px;  
+  display: flex;
+}
+.price img {
+  padding-top: 32px;
+  padding-left: 10px;
+}
+.info-shippment {
+  display: flex;
+}
+.info-shippment.state{
+  width: 100%;
+  display: flex;
+  align-content: right;
+  justify-content: right;
+  align-items: right;
 }

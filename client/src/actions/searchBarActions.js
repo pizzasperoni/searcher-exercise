@@ -1,4 +1,4 @@
-import { FETCH_PRODUCTS, SET_PRODUCT_NAME } from './types'
+import { FETCH_PRODUCTS, SET_PRODUCT_NAME, CLEAR_STATE } from './types'
 
 const SEARCH_URL = 'http://localhost:8000/api/items'
 
@@ -11,6 +11,13 @@ export const fetchProducts = (product) => dispatch => {
       type: FETCH_PRODUCTS,
       payload: products
     })
+  })
+}
+
+export const clearState = () => dispatch => {
+  dispatch({
+    type: CLEAR_STATE,
+    payload: undefined
   })
 }
 

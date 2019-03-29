@@ -1,6 +1,7 @@
 import React from 'react'
 import logo from '../../../public/assets/Logo_ML.png'
 import icSearch from '../../../public/assets/ic_Search.png'
+import { Link } from 'react-router-dom'
 
 const SingleInput = (props) => {
   return (
@@ -14,8 +15,10 @@ const SingleInput = (props) => {
           value={props.content}
         >
         </input>
-        <button type="submit">
-          <img src={icSearch} height="12" width="12"></img>
+        <button type="submit" onClick={props.handleSubmit}>
+          <Link to={`/items?search=${props.content}`}>
+            <img src={icSearch} height="12" width="12"></img>
+          </Link>
         </button>
       </form>
       

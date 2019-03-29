@@ -18,11 +18,13 @@ class ListElementContainer extends Component {
           return (
             <ListElement 
               showDetails={((e)=>this.showDetails(e, item))}
+              shipping={item.shipping.free_shipping}
               key={item.id}
               id={item.id}
               thumbnail={item.thumbnail}
               price={item.price}
               title={item.title}
+              state={item.address.state_name}
             />
           )
         })
