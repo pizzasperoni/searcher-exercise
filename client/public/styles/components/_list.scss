@@ -4,7 +4,7 @@
 }
 .list-item {
   display:flex;
-  justify-content: baseline;
+  justify-content: center;
   font-size: 18px;
   font-family: $font-family;
   border: 1px solid $light-grey;
@@ -36,9 +36,18 @@
   text-decoration-line: underline;
 }
 .info-shippment {
-  width: 600px;
   display: flex;
   justify-content: space-between;
+  @media screen and (min-width: 800px){
+    width: 400px;
+  }
+  @media screen and (min-width: 1500px){
+    width: 750px;
+  }
+  @media screen and (min-width:1900px){
+    width: 1050px;
+  }
+
 }
 .info-shippment h2 {
   font-size: 24px;
@@ -47,5 +56,4 @@
   color: $grey;
   padding-top: 18px;
   font-size: 14px;
-
 }
