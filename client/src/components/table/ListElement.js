@@ -14,7 +14,7 @@ const ListElement = (props) => {
           <div className="description">
             <div className="info-shippment">
               <div className="price">
-                <p>$ {props.price} </p>
+                <h2>$ {props.price} </h2>
                 {
                   props.shipping ?
                     <img src={shipping} height="18" width="18"></img>

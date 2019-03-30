@@ -1,3 +1,7 @@
+.list {
+  padding-top: 16px;
+  width: 70%;
+}
 .list-item {
   display:flex;
   justify-content: baseline;
@@ -22,16 +26,20 @@
   display: flex;
 }
 .price img {
-  padding-top: 32px;
+  padding-top: 25px;
   padding-left: 10px;
 }
 .info-shippment {
+  width: 600px;
   display: flex;
+  justify-content: space-between;
 }
-.info-shippment.state{
-  width: 100%;
-  display: flex;
-  align-content: right;
-  justify-content: right;
-  align-items: right;
+.info-shippment h2 {
+  font-size: 24px;
+}
+.info-shippment p{
+  color: $grey;
+  padding-top: 18px;
+  font-size: 14px;
+
 }

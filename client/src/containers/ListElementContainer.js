@@ -12,7 +12,7 @@ class ListElementContainer extends Component {
 
   render() {
     return (
-      <div onClick={this.props.handleDetails}>
+      <div className="list" onClick={this.props.handleDetails}>
         {
           this.props.items.map((item)=>{
           return (
