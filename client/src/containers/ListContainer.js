@@ -4,13 +4,13 @@ import { bindActionCreators } from 'redux'
 
 // components
 import ListElementContainer from './ListElementContainer'
-import Details from '../components/details/Details'
 // actions
 import { fetchProducts } from '../actions/searchBarActions'
 import { showDetails } from '../actions/listActions'
 
 class ListContainer extends Component {
   componentWillMount(){
+    console.log(this.props.products)
     if(this.props.search.includes('search')){
       const params = new URLSearchParams(this.props.search)
       this.props.fetchProducts(params.get('search'))
@@ -46,9 +46,7 @@ const mapDispatchToProps = dispatch => {
 // mapStateToProps
 const mapStateToProps = state => ({
   products: state.products.products,
-  productName: state.products.productName,
-  isShowingDetails: state.products.isShowingDetails,
-  productDetails: state.products.productDetails,
+  isShowingDetails: state.products.isShowingDetails
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListContainer)

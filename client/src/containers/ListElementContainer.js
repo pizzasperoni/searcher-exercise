@@ -22,7 +22,9 @@ class ListElementContainer extends Component {
               key={item.id}
               id={item.id}
               thumbnail={item.thumbnail}
-              price={item.price}
+              amount={item.price.amount}
+              decimals={item.price.decimals}
+              currency={item.price.currency}
               title={item.title}
               state={item.address.state_name}
             />

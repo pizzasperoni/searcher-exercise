@@ -7,9 +7,10 @@ export const fetchProducts = (product) => dispatch => {
   .then(res => res.json())
   .then(data =>{
     let products = data.productList
+    console.log('productList', products)
     dispatch({
       type: FETCH_PRODUCTS,
-      payload: products
+      payload: products.items
     })
   })
 }

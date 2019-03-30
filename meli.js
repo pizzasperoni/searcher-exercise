@@ -30,6 +30,12 @@ module.exports = {
     let int = parseInt(number)
     let decimals = number - int
     
+    decimals = decimals.toFixed(2) * 100
+
+    if(decimals === 0){
+      decimals = "00"
+    }
+
     let price = {
       amount: int,
       decimals: decimals

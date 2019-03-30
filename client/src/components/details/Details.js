@@ -1,16 +1,18 @@
 import React from 'react'
-
 const Details = (props) => {
   const productDetails = props.details
+  console.log('productDetails', productDetails)
   return (
     <div className="details">
       <section className="details-body">
-        <img src={import icSearch from '../../../public/assets/ic_Search.png'
-        .pictures[0].url} height="680" width="680"></img>
+        <img src={productDetails.pictures[0].url} height="680" width="680"></img>
         <div className="purchase">
           <h4>{productDetails.condition} - {productDetails.sold_quantity} vendidos</h4>
           <h3>{productDetails.title}</h3>
-          <h1>$ {productDetails.price}</h1>
+          <div className="price">
+            <h1>${productDetails.price.currency} {productDetails.price.amount}</h1>
+            <span>{productDetails.price.decimals}</span>
+          </div>
           <button className="btn">Comprar</button>
         </div>
       </section>

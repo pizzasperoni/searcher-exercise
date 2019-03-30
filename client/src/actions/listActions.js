@@ -18,8 +18,10 @@ export const getProductDetails =  (id) => async dispatch => {
   let data = await res.json()
 
   productDetails = data.product
+
+  console.log('productDetails', productDetails)
   dispatch({
     type: GET_DETAILS,
-    payload: productDetails
+    payload: productDetails.item
   })
 }
