@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { withRouter } from 'react-router-dom'
 
 import SingleInput from '../components/form/SingleInput'
 
@@ -14,7 +15,8 @@ class searchBar extends Component {
     e.preventDefault()
     this.props.clearState()
     this.props.fetchProducts(this.props.productName)
-    this.props.showDetails(true)
+    this.props.showDetails(true) //because the action sets to false
+    console.log(this.props.history.push(`/items?search=${this.props.productName}`))
   }
 
   handleInput = e => {
@@ -51,4 +53,4 @@ const mapStateToProps = state => ({
   isShowingDetails: state.products.isShowingDetails
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(searchBar)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(searchBar))
