@@ -4,7 +4,6 @@ import shipping from '../../../public/assets/ic_shipping.png'
 import DetailsContainer from '../../containers/DetailsContainer'
 
 const ListElement = (props) => {
-  console.log(props.shipping)
   return (
     <BrowserRouter>
       <li className="list-item" onClick={props.showDetails}>

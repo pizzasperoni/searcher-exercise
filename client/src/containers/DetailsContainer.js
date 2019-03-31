@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import { getProductDetails, showDetails  } from '../actions/listActions'
+
+import Categories from '../components/table/Categories'
 import SearchBarContainer from './SearchBarContainer'
 import Details from '../components/details/Details'
 import Spinner from '../components/loading/Spinner'
@@ -17,8 +19,10 @@ class DetailsContainer extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div>
         <SearchBarContainer />
+        <Categories categories={this.props.categories}/>
+        <div className="container">
         { 
           this.props.productDetails.pictures && this.props.isShowingDetails ? 
           ( 
@@ -29,6 +33,7 @@ class DetailsContainer extends Component {
             <Spinner />
           </div>)
         }
+        </div>
       </div>
     )
   }
@@ -36,7 +41,8 @@ class DetailsContainer extends Component {
 
 const mapStateToProps = state => ({
   productDetails: state.products.productDetails,
-  isShowingDetails: state.products.isShowingDetails
+  isShowingDetails: state.products.isShowingDetails,
+  categories: state.products.categories
 })
 
 const mapDispatchToProps = dispatch => {

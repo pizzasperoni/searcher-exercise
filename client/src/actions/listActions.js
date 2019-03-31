@@ -16,10 +16,9 @@ export const getProductDetails =  (id) => async dispatch => {
 
   let res = await fetch(url)
   let data = await res.json()
-
+  console.log('action', data)
   productDetails = data.product
 
-  console.log('productDetails', productDetails)
   dispatch({
     type: GET_DETAILS,
     payload: productDetails.item

@@ -50,6 +50,7 @@ app.get('/api/items/:id', async (req, res) => {
       condition, 
       free_shipping, 
       sold_quantity,
+      categories,
       description: description
     }
   }

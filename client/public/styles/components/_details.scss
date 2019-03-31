@@ -1,19 +1,31 @@
 .details {
   font-family: $font-family;
   background-color: white;
-  width: 80%;
-  margin-top: 16px;
+  width: 55%;
   display:flex;
   flex-direction: column;
-  padding:32px
+  padding:32px;
+  @media screen and (min-width: 1200px){
+    width: 70%;
+  }
 }
 .details-body img {
-  display: block;
+  display: flex;
   max-width: 680px;
   max-height: 680px;
   width: auto;
   height: auto;
   padding-right: 100px;  
+}
+.details-body {
+  display: flex;
+  justify-content: space-between;
+}
+
+.purchase {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-end;
 }
 .purchase.price {
   display: flex;
@@ -29,10 +41,7 @@
   flex-direction: column;
   align-items: center;
 }
-.details-body {
-  display: flex;
-  align-items: center;
-}
+
 .details-body h1 {
   font-size: 46px;
 }

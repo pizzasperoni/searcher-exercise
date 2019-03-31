@@ -3398,10 +3398,9 @@ var getProductDetails = exports.getProductDetails = function getProductDetails(i
             case 7:
               data = _context.sent;
 
-
+              console.log('action', data);
               productDetails = data.product;
 
-              console.log('productDetails', productDetails);
               dispatch({
                 type: _types.GET_DETAILS,
                 payload: productDetails.item
@@ -4763,6 +4762,7 @@ var SHOW_DETAIL = exports.SHOW_DETAIL = 'SHOW_DETAIL';
 var SET_PRODUCT_NAME = exports.SET_PRODUCT_NAME = 'SET_PRODUCT_NAME';
 var GET_DETAILS = exports.GET_DETAILS = 'GET_DETAILS';
 var CLEAR_STATE = exports.CLEAR_STATE = 'CLEAR_STATE';
+var SET_CATEGORIES = exports.SET_CATEGORIES = 'SET_CATEGORIES';
 
 /***/ }),
 /* 107 */
@@ -4786,6 +4786,10 @@ var _reactRedux = __webpack_require__(51);
 var _redux = __webpack_require__(43);
 
 var _listActions = __webpack_require__(74);
+
+var _Categories = __webpack_require__(421);
+
+var _Categories2 = _interopRequireDefault(_Categories);
 
 var _SearchBarContainer = __webpack_require__(147);
 
@@ -4829,12 +4833,17 @@ var DetailsContainer = function (_Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { className: 'container' },
+        null,
         _react2.default.createElement(_SearchBarContainer2.default, null),
-        this.props.productDetails.pictures && this.props.isShowingDetails ? _react2.default.createElement(_Details2.default, { details: this.props.productDetails }) : _react2.default.createElement(
+        _react2.default.createElement(_Categories2.default, { categories: this.props.categories }),
+        _react2.default.createElement(
           'div',
-          null,
-          _react2.default.createElement(_Spinner2.default, null)
+          { className: 'container' },
+          this.props.productDetails.pictures && this.props.isShowingDetails ? _react2.default.createElement(_Details2.default, { details: this.props.productDetails }) : _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(_Spinner2.default, null)
+          )
         )
       );
     }
@@ -4846,7 +4855,8 @@ var DetailsContainer = function (_Component) {
 var mapStateToProps = function mapStateToProps(state) {
   return {
     productDetails: state.products.productDetails,
-    isShowingDetails: state.products.isShowingDetails
+    isShowingDetails: state.products.isShowingDetails,
+    categories: state.products.categories
   };
 };
 
@@ -8197,10 +8207,13 @@ var fetchProducts = exports.fetchProducts = function fetchProducts(product) {
       return res.json();
     }).then(function (data) {
       var products = data.productList;
-      console.log('productList', products);
       dispatch({
         type: _types.FETCH_PRODUCTS,
         payload: products.items
+      });
+      dispatch({
+        type: _types.SET_CATEGORIES,
+        payload: products.categories
       });
     });
   };
@@ -13476,7 +13489,7 @@ if(false) {
 
 exports = module.exports = __webpack_require__(331)(false);
 // Module
-exports.push([module.i, ".search-bar {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background-color: #FFE700;\n  padding: 10px;\n  line-height: 20px;\n  width: 100%; }\n\n.form-control {\n  display: flex;\n  padding-left: 20px;\n  justify-content: center;\n  width: 60%; }\n\ninput[type=\"text\"] {\n  width: 100%;\n  font-family: \"Quicksand\", sans-serif;\n  font-size: 14px;\n  border: none;\n  border-radius: 5px 0 0 5px;\n  padding: 6px; }\n\n.search-bar button {\n  padding: 7px 8px 8px 8px;\n  background-color: #EEEEEE;\n  border: none;\n  border-radius: 0 5px 5px 0; }\n\n.list {\n  padding-top: 16px;\n  width: 70%; }\n\n.list-item {\n  display: flex;\n  justify-content: center;\n  font-size: 18px;\n  font-family: \"Quicksand\", sans-serif;\n  border: 1px solid #EEEEEE;\n  padding: 16px;\n  background-color: white;\n  margin: 0; }\n\n.list-item .description {\n  padding-left: 16px; }\n\n.list-item .thumbnail {\n  border-radius: 4px; }\n\n.price {\n  font-size: 25px;\n  display: flex; }\n\n.price img {\n  padding-top: 25px;\n  padding-left: 10px; }\n\n.price span {\n  font-size: 12px;\n  padding-top: 24px;\n  padding-left: 5px;\n  text-decoration-line: underline; }\n\n.info-shippment {\n  display: flex;\n  justify-content: space-between; }\n  @media screen and (min-width: 800px) {\n    .info-shippment {\n      width: 400px; } }\n  @media screen and (min-width: 1500px) {\n    .info-shippment {\n      width: 750px; } }\n  @media screen and (min-width: 1900px) {\n    .info-shippment {\n      width: 1050px; } }\n\n.info-shippment h2 {\n  font-size: 24px; }\n\n.info-shippment p {\n  color: #999999;\n  padding-top: 18px;\n  font-size: 14px; }\n\n.details {\n  font-family: \"Quicksand\", sans-serif;\n  background-color: white;\n  width: 80%;\n  margin-top: 16px;\n  display: flex;\n  flex-direction: column;\n  padding: 32px; }\n\n.details-body img {\n  display: block;\n  max-width: 680px;\n  max-height: 680px;\n  width: auto;\n  height: auto;\n  padding-right: 100px; }\n\n.purchase.price {\n  display: flex; }\n\n.purchase span {\n  font-size: 20px;\n  padding-top: 46px;\n  padding-left: 5px;\n  text-decoration-line: underline; }\n\n.container {\n  display: flex;\n  flex-direction: column;\n  align-items: center; }\n\n.details-body {\n  display: flex;\n  align-items: center; }\n\n.details-body h1 {\n  font-size: 46px; }\n\n.details-body h3 {\n  font-size: 24px; }\n\n.details-body h4 {\n  font-size: 14px; }\n\n.details-footer h3 {\n  font-size: 28px; }\n\n.details-footer p {\n  color: #999999;\n  font-size: 16px;\n  max-width: 720px; }\n\n.btn {\n  background-color: #3483FA;\n  border: none;\n  color: white;\n  padding: 15px 32px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 16px; }\n\nbody {\n  background-color: #EEEEEE;\n  display: flex;\n  flex-direction: column;\n  margin: 0; }\n\nul {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  margin: 0; }\n", ""]);
+exports.push([module.i, ".search-bar {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background-color: #FFE700;\n  padding: 10px;\n  line-height: 20px;\n  width: 100%; }\n\n.form-control {\n  display: flex;\n  padding-left: 20px;\n  justify-content: center;\n  width: 60%; }\n\ninput[type=\"text\"] {\n  width: 100%;\n  font-family: \"Quicksand\", sans-serif;\n  font-size: 14px;\n  border: none;\n  border-radius: 5px 0 0 5px;\n  padding: 6px; }\n\n.search-bar button {\n  padding: 7px 8px 8px 8px;\n  background-color: #EEEEEE;\n  border: none;\n  border-radius: 0 5px 5px 0; }\n\n.list {\n  width: 70%; }\n\n.list-item {\n  display: flex;\n  justify-content: center;\n  font-size: 18px;\n  font-family: \"Quicksand\", sans-serif;\n  border: 1px solid #EEEEEE;\n  padding: 16px;\n  background-color: white;\n  margin: 0; }\n\n.list-item .description {\n  padding-left: 16px; }\n\n.list-item .thumbnail {\n  border-radius: 4px; }\n\n.price {\n  font-size: 25px;\n  display: flex; }\n\n.price img {\n  padding-top: 25px;\n  padding-left: 10px; }\n\n.price span {\n  font-size: 12px;\n  padding-top: 24px;\n  padding-left: 5px;\n  text-decoration-line: underline; }\n\n.info-shippment {\n  display: flex;\n  justify-content: space-between; }\n  @media screen and (min-width: 800px) {\n    .info-shippment {\n      width: 400px; } }\n  @media screen and (min-width: 1300px) {\n    .info-shippment {\n      width: 670px; } }\n  @media screen and (min-width: 1900px) {\n    .info-shippment {\n      width: 1050px; } }\n\n.info-shippment h2 {\n  font-size: 24px; }\n\n.info-shippment p {\n  color: #999999;\n  padding-top: 18px;\n  font-size: 14px; }\n\n.details {\n  font-family: \"Quicksand\", sans-serif;\n  background-color: white;\n  width: 55%;\n  display: flex;\n  flex-direction: column;\n  padding: 32px; }\n  @media screen and (min-width: 1200px) {\n    .details {\n      width: 70%; } }\n\n.details-body img {\n  display: flex;\n  max-width: 680px;\n  max-height: 680px;\n  width: auto;\n  height: auto;\n  padding-right: 100px; }\n\n.details-body {\n  display: flex;\n  justify-content: space-between; }\n\n.purchase {\n  display: flex;\n  flex-direction: column;\n  align-content: flex-end; }\n\n.purchase.price {\n  display: flex; }\n\n.purchase span {\n  font-size: 20px;\n  padding-top: 46px;\n  padding-left: 5px;\n  text-decoration-line: underline; }\n\n.container {\n  display: flex;\n  flex-direction: column;\n  align-items: center; }\n\n.details-body h1 {\n  font-size: 46px; }\n\n.details-body h3 {\n  font-size: 24px; }\n\n.details-body h4 {\n  font-size: 14px; }\n\n.details-footer h3 {\n  font-size: 28px; }\n\n.details-footer p {\n  color: #999999;\n  font-size: 16px;\n  max-width: 720px; }\n\n.btn {\n  background-color: #3483FA;\n  border: none;\n  color: white;\n  padding: 15px 32px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 16px;\n  width: 50%; }\n\n.categories {\n  color: #666666;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  padding: 16px 0 16px 0;\n  font-size: 14px;\n  font-family: \"Quicksand\", sans-serif;\n  list-style: none;\n  width: 57%; }\n  @media screen and (max-width: 1380px) {\n    .categories {\n      width: 67%; } }\n\nbody {\n  background-color: #EEEEEE;\n  display: flex;\n  flex-direction: column;\n  margin: 0; }\n\nul {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  margin: 0; }\n", ""]);
 
 
 
@@ -41432,7 +41445,8 @@ var initialState = {
   productName: '',
   products: [],
   isShowingDetails: false,
-  productDetails: {}
+  productDetails: {},
+  categories: []
 };
 
 var productsReducer = function productsReducer() {
@@ -41441,7 +41455,6 @@ var productsReducer = function productsReducer() {
 
   switch (action.type) {
     case _types.FETCH_PRODUCTS:
-      console.log('products', action.payload);
       return _extends({}, state, {
         products: action.payload
       });
@@ -41450,13 +41463,17 @@ var productsReducer = function productsReducer() {
         productName: action.payload
       });
     case _types.SHOW_DETAIL:
-      console.log('action', action.payload);
       return _extends({}, state, {
         isShowingDetails: action.payload
       });
     case _types.GET_DETAILS:
       return _extends({}, state, {
         productDetails: action.payload
+      });
+    case _types.SET_CATEGORIES:
+      console.log(action.payload);
+      return _extends({}, state, {
+        categories: action.payload
       });
     case _types.CLEAR_STATE:
       return initialState;
@@ -41646,6 +41663,10 @@ var _ListElementContainer = __webpack_require__(381);
 
 var _ListElementContainer2 = _interopRequireDefault(_ListElementContainer);
 
+var _Categories = __webpack_require__(421);
+
+var _Categories2 = _interopRequireDefault(_Categories);
+
 var _searchBarActions = __webpack_require__(148);
 
 var _listActions = __webpack_require__(74);
@@ -41685,7 +41706,6 @@ var ListContainer = function (_Component) {
   _createClass(ListContainer, [{
     key: 'componentWillMount',
     value: function componentWillMount() {
-      console.log(this.props.products);
       if (this.props.search.includes('search')) {
         var params = new URLSearchParams(this.props.search);
         this.props.fetchProducts(params.get('search'));
@@ -41697,6 +41717,7 @@ var ListContainer = function (_Component) {
       return _react2.default.createElement(
         'div',
         null,
+        _react2.default.createElement(_Categories2.default, { categories: this.props.categories }),
         _react2.default.createElement(
           'ul',
           null,
@@ -41726,7 +41747,8 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 var mapStateToProps = function mapStateToProps(state) {
   return {
     products: state.products.products,
-    isShowingDetails: state.products.isShowingDetails
+    isShowingDetails: state.products.isShowingDetails,
+    categories: state.products.categories
   };
 };
 
@@ -41853,7 +41875,6 @@ var _DetailsContainer2 = _interopRequireDefault(_DetailsContainer);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ListElement = function ListElement(props) {
-  console.log(props.shipping);
   return _react2.default.createElement(
     _reactRouterDom.BrowserRouter,
     null,
@@ -41937,66 +41958,72 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Details = function Details(props) {
   var productDetails = props.details;
-  console.log('productDetails', productDetails);
+  console.log(props);
   return _react2.default.createElement(
-    'div',
-    { className: 'details' },
+    "div",
+    { className: "details" },
     _react2.default.createElement(
-      'section',
-      { className: 'details-body' },
-      _react2.default.createElement('img', { src: productDetails.pictures[0].url, height: '680', width: '680' }),
+      "section",
+      { className: "details-body" },
+      _react2.default.createElement("img", { src: productDetails.pictures[0].url, height: "680", width: "680" }),
       _react2.default.createElement(
-        'div',
-        { className: 'purchase' },
+        "div",
+        { className: "purchase" },
         _react2.default.createElement(
-          'h4',
+          "h4",
           null,
           productDetails.condition,
-          ' - ',
+          " - ",
           productDetails.sold_quantity,
-          ' vendidos'
+          " vendidos"
         ),
         _react2.default.createElement(
-          'h3',
+          "h3",
           null,
           productDetails.title
         ),
         _react2.default.createElement(
-          'div',
-          { className: 'price' },
+          "div",
+          { className: "price" },
           _react2.default.createElement(
-            'h1',
+            "h1",
             null,
-            '$',
+            "$",
             productDetails.price.currency,
-            ' ',
+            " ",
             productDetails.price.amount
           ),
           _react2.default.createElement(
-            'span',
+            "span",
             null,
             productDetails.price.decimals
           )
         ),
         _react2.default.createElement(
-          'button',
-          { className: 'btn' },
-          'Comprar'
+          "button",
+          { className: "btn" },
+          "Comprar"
         )
       )
     ),
     _react2.default.createElement(
-      'section',
-      { className: 'details-footer' },
+      "section",
+      { className: "details-footer" },
       _react2.default.createElement(
-        'h3',
-        { className: 'title' },
-        'Descripcion del producto'
+        "h3",
+        { className: "title" },
+        "Descripcion del producto"
       ),
       _react2.default.createElement(
-        'p',
+        "div",
         null,
-        productDetails.description
+        productDetails.description.split("\n").map(function (i, key) {
+          return _react2.default.createElement(
+            "p",
+            { key: key },
+            i
+          );
+        })
       )
     )
   );
@@ -46993,6 +47020,56 @@ var Error = function Error() {
 };
 
 exports.default = Error;
+
+/***/ }),
+/* 421 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Categories = function Categories(props) {
+  return _react2.default.createElement(
+    "ul",
+    { className: "categories" },
+    props.categories.map(function (category, index) {
+      if (index === category.length) {
+        return _react2.default.createElement(
+          "li",
+          { key: index },
+          _react2.default.createElement(
+            "strong",
+            null,
+            category
+          )
+        );
+      }
+      return _react2.default.createElement(
+        "li",
+        { key: index },
+        category,
+        " ",
+        _react2.default.createElement(
+          "span",
+          null,
+          " > "
+        )
+      );
+    })
+  );
+};
+
+exports.default = Categories;
 
 /***/ })
 /******/ ]);

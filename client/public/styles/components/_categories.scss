@@ -1,0 +1,14 @@
+.categories {
+  color: $dark-grey;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 16px 0 16px 0;
+  font-size: 14px;
+  font-family: $font-family;
+  list-style: none;
+  width: 57%;
+  @media screen and (max-width: 1380px){
+    width: 67%;
+  }
+}

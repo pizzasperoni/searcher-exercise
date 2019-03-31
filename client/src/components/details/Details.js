@@ -1,7 +1,7 @@
 import React from 'react'
 const Details = (props) => {
   const productDetails = props.details
-  console.log('productDetails', productDetails)
+  console.log(props)
   return (
     <div className="details">
       <section className="details-body">
@@ -18,7 +18,13 @@ const Details = (props) => {
       </section>
       <section className="details-footer">
         <h3 className="title">Descripcion del producto</h3>
-        <p>{productDetails.description}</p>
+        <div>
+          {
+            productDetails.description.split("\n").map((i, key) => {
+              return (<p key={key}>{i}</p>)
+            })
+          }
+        </div>
       </section>
     </div>
   )
