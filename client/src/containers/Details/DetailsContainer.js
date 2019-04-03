@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { getProductDetails, showDetails  } from '../actions/listActions'
+import { getProductDetails, showDetails  } from '../../actions/listActions'
 
-import Categories from '../components/table/Categories'
-import SearchBarContainer from './SearchBarContainer'
-import Details from '../components/details/Details'
-import Spinner from '../components/loading/Spinner'
+import Categories from '../../components/table/Categories'
+import SearchBarContainer from '../SearchBar/SearchBarContainer'
+import Details from '../../components/details/Details'
+import Spinner from '../../components/loading/Spinner'
+import PropTypes from 'prop-types'
 
 class DetailsContainer extends Component {
   componentWillMount(){
@@ -50,6 +51,14 @@ const mapDispatchToProps = dispatch => {
     getProductDetails,
     showDetails
   }, dispatch)
+}
+
+DetailsContainer.propTypes = {
+  getProductDetails: PropTypes.func.isRequired,
+  showDetails: PropTypes.func.isRequired,
+  productDetails: PropTypes.object.isRequired,
+  isShowingDetails: PropTypes.bool.isRequired,
+  categories: PropTypes.array.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DetailsContainer)

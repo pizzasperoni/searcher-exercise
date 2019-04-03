@@ -6,7 +6,7 @@ import store from './store'
 
 // components
 import App from './App'
-import DetailsContainer from './containers/DetailsContainer'
+import DetailsContainer from './containers/Details/DetailsContainer'
 import Error from './components/Error'
 
 

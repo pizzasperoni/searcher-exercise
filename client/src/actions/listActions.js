@@ -13,14 +13,17 @@ export const showDetails = isShowingDetails => dispatch => {
 export const getProductDetails =  (id) => async dispatch => {
   let url = `${PRODUCT_URL}${id}`
   let productDetails = {}
+  let res, data
+  try {
+    res = await fetch(url)
+    data = await res.json()
 
-  let res = await fetch(url)
-  let data = await res.json()
-  console.log('action', data)
-  productDetails = data.product
-
-  dispatch({
-    type: GET_DETAILS,
-    payload: productDetails.item
-  })
+    productDetails = data.product
+    dispatch({
+      type: GET_DETAILS,
+      payload: productDetails.item
+    })
+  }catch (err) {
+    console.log("Error en el servicio", err)
+  }
 }

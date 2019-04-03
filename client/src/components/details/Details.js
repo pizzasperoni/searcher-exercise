@@ -1,7 +1,6 @@
 import React from 'react'
 const Details = (props) => {
   const productDetails = props.details
-  console.log(props)
   return (
     <div className="details">
       <section className="details-body">

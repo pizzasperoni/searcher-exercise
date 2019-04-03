@@ -38,7 +38,6 @@ const productsReducer = (state = initialState, action) => {
         productDetails: action.payload
       }
     case SET_CATEGORIES:
-      console.log(action.payload)
       return {
         ...state,
         categories: action.payload

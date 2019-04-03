@@ -1,0 +1,14 @@
+{
+  "categories": ["category 1", "category 2", "category 3"],
+  "condition": "Nuevo",
+  "description": "Lorem ipsum dolor sit amet",
+  "id": "string",
+  "pictures": ["img1", "img2", "img3"],
+  "price": {
+    "currency": "ARS",
+    "amount": 20,
+    "decimals": 20
+  },
+  "sold_quantity": 20,
+  "title": "Title"
+}

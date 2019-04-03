@@ -3,11 +3,12 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
 
-import SingleInput from '../components/form/SingleInput'
+import SingleInput from '../../components/form/SingleInput'
 
 // actions
-import { showDetails } from '../actions/listActions'
-import { fetchProducts, setProductName, clearState } from '../actions/searchBarActions'
+import { showDetails } from '../../actions/listActions'
+import { fetchProducts, setProductName, clearState } from '../../actions/searchBarActions'
+import PropTypes from 'prop-types'
 
 class searchBar extends Component {
 
@@ -16,7 +17,7 @@ class searchBar extends Component {
     this.props.clearState()
     this.props.fetchProducts(this.props.productName)
     this.props.showDetails(true) //because the action sets to false
-    console.log(this.props.history.push(`/items?search=${this.props.productName}`))
+    this.props.history.push(`/items?search=${this.props.productName}`)
   }
 
   handleInput = e => {
@@ -35,6 +36,15 @@ class searchBar extends Component {
   }
 }
 
+searchBar.propTypes = {
+  setProductName: PropTypes.func.isRequired,
+  fetchProducts: PropTypes.func.isRequired,
+  showDetails: PropTypes.func.isRequired,
+  clearState: PropTypes.func.isRequired,
+  products: PropTypes.array,
+  productName: PropTypes.string,
+  isShowingDetails: PropTypes.bool
+}
 
 // mapDispatchToProps
 const mapDispatchToProps = dispatch => {
@@ -52,5 +62,7 @@ const mapStateToProps = state => ({
   productName: state.products.productName,
   isShowingDetails: state.products.isShowingDetails
 })
+
+
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(searchBar))

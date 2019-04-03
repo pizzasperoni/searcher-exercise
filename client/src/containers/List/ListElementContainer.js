@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import ListElement from '../components/table/ListElement'
+import ListElement from '../../components/table/ListElement'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import { getProductDetails,  } from '../actions/listActions'
+import { getProductDetails,  } from '../../actions/listActions'
 class ListElementContainer extends Component {
 
   showDetails = (e, product) =>{

@@ -4,10 +4,10 @@ import { bindActionCreators } from 'redux'
 
 // components
 import ListElementContainer from './ListElementContainer'
-import Categories from '../components/table/Categories'
+import Categories from '../../components/table/Categories'
 // actions
-import { fetchProducts } from '../actions/searchBarActions'
-import { showDetails } from '../actions/listActions'
+import { fetchProducts } from '../../actions/searchBarActions'
+import { showDetails } from '../../actions/listActions'
 
 class ListContainer extends Component {
   componentWillMount(){

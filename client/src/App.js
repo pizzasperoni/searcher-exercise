@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
-import SearchBarContainer from './containers/SearchBarContainer'
-import ListContainer from './containers/ListContainer'
-import DetailsContainer from './containers/DetailsContainer'
+import SearchBarContainer from './containers/SearchBar/SearchBarContainer'
+import ListContainer from './containers/List/ListContainer'
+import DetailsContainer from './containers/Details/DetailsContainer'
 class App extends Component {
  
   render() {

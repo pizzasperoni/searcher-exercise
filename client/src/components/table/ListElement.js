@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Route, Link } from 'react-router-dom'
 import shipping from '../../../public/assets/ic_shipping.png'
-import DetailsContainer from '../../containers/DetailsContainer'
+import DetailsContainer from '../../containers/Details/DetailsContainer'
 
 const ListElement = (props) => {
   return (

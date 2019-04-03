@@ -1,0 +1,10 @@
+{
+  "amount": "20",
+  "currency": "ARS",
+  "decimals": 12,
+  "id": "MLA00000",
+  "state": "Capital Federal",
+  "thumbnail": "img.png",
+  "title": "title",
+  "shipping": true
+}
